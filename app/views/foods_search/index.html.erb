@@ -1,2 +1,12 @@
 <%= tag.h1 "Foods Search:" %>
 <%= tag.h3 "#{@results[:totalHits]} total results" %>
+<%= tag.br %>
+<%= tag.section class: "foods" do %>
+  <%= tag.ul do %>
+    <% @results[:foods].each do |food| %>
+      <%= tag.li class: 'food' do %>
+        <%= tag.p "Description: #{food[:description]}" %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

@@ -19,13 +19,20 @@ RSpec.describe 'Search for food by ingredient:' do
         it 'Then I should see a total number of items returned by the search.' do
           expect(page).to have_content("39244 total results")
         end
+
+        it 'Then I should see a list of ten foods that contain the ingredient "sweet potatoes"' do
+          within '.foods' do
+            expect(page).to have_css('.food', count: 10)
+            within first '.food' do
+              expect(page).to have_content('Description: SWEET POTATOES')
+            end
+          end
+        end
       end
     end
   end
 end
 
-# Then I should see a total of the number of items returned by the search.
-# Then I should see a list of ten foods that contain the ingredient "sweet potatoes"
 # And for each of the foods I should see:
 # - The food's GTIN/UPC code
 # - The food's description

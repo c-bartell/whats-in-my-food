@@ -5,6 +5,7 @@ class FoodsSearchController < ApplicationController
     end
     response = conn.get('/fdc/v1/foods/search') do |req|
       req.params[:query] = query
+      req.params[:pageSize] = 10
     end
 
     @results = JSON.parse(response.body, symbolize_names: true)
