@@ -11,8 +11,13 @@ RSpec.describe 'Search for food by ingredient:' do
           fill_in :q, with: "sweet potatoes"
           click_button 'Search'
         end
+
         it 'Then I should be on page "/foods"' do
           expect(current_path).to eq(foods_path)
+        end
+
+        it 'Then I should see a total number of items returned by the search.' do
+          expect(page).to have_content("39244 total results")
         end
       end
     end
