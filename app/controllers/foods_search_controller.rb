@@ -1,14 +1,12 @@
 class FoodsSearchController < ApplicationController
   def index
-    conn = Faraday.new(url: 'https://api.nal.usda.gov') do |req|
-      req.params[:api_key] = ENV['FDC_API_KEY']
-    end
-    response = conn.get('/fdc/v1/foods/search') do |req|
-      req.params[:query] = query
-      req.params[:pageSize] = 10
-    end
-
-    @results = JSON.parse(response.body, symbolize_names: true)
+    # response = FoodsSearchService.conn.get('/fdc/v1/foods/search') do |req|
+    #   req.params[:query] = query
+    #   req.params[:pageSize] = 10
+    # end
+    #
+    # @results = JSON.parse(response.body, symbolize_names: true)
+    @results = FoodsSearchService.foods_search(query)
   end
 
   private
