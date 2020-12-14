@@ -2,11 +2,16 @@
 <%= tag.h3 "#{@results[:totalHits]} total results" %>
 <%= tag.br %>
 <%= tag.section class: "foods" do %>
+<%= tag.p "Search Results:" %>
   <%= tag.ul do %>
     <% @results[:foods].each do |food| %>
       <%= tag.li class: 'food' do %>
         <%= tag.p "Description: #{food[:description]}" %>
+        <%= tag.p "GTIN/UPC Code: #{food[:gtinUpc]}" %>
+        <%= tag.p "Brand Owner: #{food[:brandOwner]}" %>
+        <%= tag.p "Ingredients: #{food[:ingredients]}" %>
       <% end %>
+      <%= tag.br %>
     <% end %>
   <% end %>
 <% end %>

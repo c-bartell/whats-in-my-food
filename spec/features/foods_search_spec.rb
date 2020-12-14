@@ -6,6 +6,7 @@ RSpec.describe 'Search for food by ingredient:' do
       before :each do
         visit root_path
       end
+
       describe 'And I fill in the search form with "sweet potatoes" and click search' do
         before :each do
           fill_in :q, with: "sweet potatoes"
@@ -23,18 +24,18 @@ RSpec.describe 'Search for food by ingredient:' do
         it 'Then I should see a list of ten foods that contain the ingredient "sweet potatoes"' do
           within '.foods' do
             expect(page).to have_css('.food', count: 10)
-            within first '.food' do
-              expect(page).to have_content('Description: SWEET POTATOES')
-            end
+          end
+        end
+
+        it 'And for each of the foods I should see details' do
+          within first '.food' do
+            expect(page).to have_content('Description: SWEET POTATOES')
+            expect(page).to have_content('GTIN/UPC Code: 070560951975')
+            expect(page).to have_content('Brand Owner: The Pictsweet Company')
+            expect(page).to have_content('Ingredients: SWEET POTATOES')
           end
         end
       end
     end
   end
 end
-
-# And for each of the foods I should see:
-# - The food's GTIN/UPC code
-# - The food's description
-# - The food's Brand Owner
-# - The food's ingredients
