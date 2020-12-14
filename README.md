@@ -13,3 +13,29 @@ Rails 5.1.7
 - `bundle exec figaro install`
 - `rails db:{create,migrate}``
 - `rails s`
+
+
+### Instructions:
+Clone this repo and follow the set up instructions: https://github.com/turingschool-examples/whats-in-my-food
+We will be querying the FoodData Central API with an ingredient to retrieve a list of the ten most relevant foods that include that ingredient.
+First, sign up for an api key here: https://fdc.nal.usda.gov/api-key-signup.html
+The documentation for the API can be found here: https://fdc.nal.usda.gov/api-guide.html
+Make sure you take the time to read the documentation carefully. Remember, we want to get a list of foods that contain an ingredient.
+Complete the following user story. Be sure to TDD all of your work. Commit your work every 15 minutes.
+
+### User Story:
+```
+As a user,
+When I visit "/"
+And I fill in the search form with "sweet potatoes"
+(Note: Use the existing search form)
+And I click "Search"
+Then I should be on page "/foods"
+Then I should see a total of the number of items returned by the search.
+Then I should see a list of ten foods that contain the ingredient "sweet potatoes"
+And for each of the foods I should see:
+- The food's GTIN/UPC code
+- The food's description
+- The food's Brand Owner
+- The food's ingredients
+```
